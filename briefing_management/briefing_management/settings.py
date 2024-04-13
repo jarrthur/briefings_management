@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # local apps
+    "core",
+    # third-party apps
+    "rest_framework",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -120,4 +125,6 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+# TODO: Check if BigAutoField is more appropriate for id fields,
+# because OpenAPI uses int64
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
