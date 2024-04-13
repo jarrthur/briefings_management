@@ -128,3 +128,14 @@ STATIC_URL = "static/"
 # TODO: Check if BigAutoField is more appropriate for id fields,
 # because OpenAPI uses int64
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Briefing Management API',
+    'DESCRIPTION': 'Description coming soon',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
