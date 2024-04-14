@@ -14,13 +14,15 @@ class BaseRetailerApiViewMixin:
 class RetailerListApiView(
     BaseRetailerApiViewMixin,
     generics.ListAPIView,
-): ...
+):
+    pass
 
 
 class RetailerCreateApiView(
     BaseRetailerApiViewMixin,
     generics.CreateAPIView,
-): ...
+):
+    pass
 
 
 class RetailerDetailUpdateApiView(

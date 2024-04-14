@@ -11,7 +11,8 @@ class BaseBriefingApiViewMixin:
     serializer_class = BriefingSerializer
 
 
-class BriefingListApiView(BaseBriefingApiViewMixin, generics.ListAPIView): ...
+class BriefingListApiView(BaseBriefingApiViewMixin, generics.ListAPIView):
+    pass
 
 
 class BriefingCreateApiView(BaseBriefingApiViewMixin, generics.CreateAPIView):
