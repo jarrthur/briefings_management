@@ -1,9 +1,8 @@
-from rest_framework import serializers
-
+from base.serializers import BaseModelSerializer
 from core.models import Briefing, Category, Retailer, Vendor
 
 
-class BriefingSerializer(serializers.ModelSerializer):
+class BriefingSerializer(BaseModelSerializer):
     class Meta:
         model = Briefing
         fields = [
@@ -17,7 +16,7 @@ class BriefingSerializer(serializers.ModelSerializer):
         ]
 
 
-class RetailerSerializer(serializers.ModelSerializer):
+class RetailerSerializer(BaseModelSerializer):
     class Meta:
         model = Retailer
         fields = [
@@ -25,3 +24,18 @@ class RetailerSerializer(serializers.ModelSerializer):
             "name",
             "vendors",
         ]
+
+
+class VendorSerializer(BaseModelSerializer):
+    class Meta:
+        model = Vendor
+        fields = [
+            "id",
+            "name",
+        ]
+
+
+class CategorySerializer(BaseModelSerializer):
+    class Meta:
+        model = Category
+        fields = ["id", "name", "description"]
