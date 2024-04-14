@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from core.models import Briefing, Category, Retailer, Vendor
 
 # Register your models here.
