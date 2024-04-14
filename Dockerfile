@@ -14,6 +14,8 @@ RUN pip install -r requirements.txt
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+COPY .env.example /.env
+
 COPY . /app/
 
 WORKDIR /app/briefing_management     
