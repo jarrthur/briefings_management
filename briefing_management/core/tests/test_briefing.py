@@ -96,9 +96,7 @@ class TestBriefingListApiView(BaseBriefingTestMixin, APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 2)
-        self.assertEqual(
-            response.data[0]["name"], Briefing.objects.first().name
-        )
+        self.assertEqual(response.data[0]["name"], Briefing.objects.first().name)
 
     def test_list_briefings_serializer_data(self):
         serializer_data = BriefingSerializer(
@@ -107,6 +105,7 @@ class TestBriefingListApiView(BaseBriefingTestMixin, APITestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.data, serializer_data)
+
 
 class TestBriefingCreateApiView(BaseBriefingTestMixin, APITestCase):
 
@@ -138,7 +137,7 @@ class TestBriefingCreateApiView(BaseBriefingTestMixin, APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Briefing.objects.count(), 0)
 
-    
+
 class TestBriefingDetailUpdateApiView(BaseBriefingTestMixin, APITestCase):
 
     @classmethod
