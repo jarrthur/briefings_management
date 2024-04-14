@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-(lt6%nrf(j1b+ku^f5l49*@22r@se^01cf858+ne2--c1@1zzl
 DEBUG = True
 
 # TODO: Use decouple to manage environment variables
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -139,4 +139,8 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "Description coming soon",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "base.schemas.BaseAutoSchema",
 }
