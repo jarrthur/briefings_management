@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
-  title: Amicci Demo
-  description: Essa API tem o objetivo de avaliar potenciais candidatos
+  title: Briefing Management
+  description: -
   contact:
     name: API Demo
-    email: demo@amicci-digital.com.br
+    email: arrthur93@gmail.com
   version: 1.0.0
 servers:
   - url: localhost/api/demo/
