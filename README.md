@@ -133,3 +133,8 @@ You can execute all tests in the project with the followings commands:
 ```bash
 python manage.py test
 ```
+
+## Main feature
+Customization of the original AutoSchema to adapt the requirements of the api description in file [desc_api.yaml](desc_api.yaml) , using [drf-specatular](https://drf-spectacular.readthedocs.io/en/latest/), overwriting the api descriptions according to their respective models.
+
+Customization can be found in the at: [schemas.py](./briefing_management/base/schemas.py)
