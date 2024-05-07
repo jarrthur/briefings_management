@@ -1,0 +1,388 @@
+openapi: 3.0.0
+info:
+  title: Amicci Demo
+  description: Essa API tem o objetivo de avaliar potenciais candidatos
+  contact:
+    name: API Demo
+    email: demo@amicci-digital.com.br
+  version: 1.0.0
+servers:
+  - url: localhost/api/demo/
+components:
+  schemas:
+    Briefing:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        retailer:
+          type: string
+        responsible:
+          type: string
+        category:
+          type: string
+        release_date:
+          type: string
+        availabe:
+          type: integer
+    Retailer:
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        vendors:
+          type: array
+    Vendor:
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    Category:
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+paths:
+  /briefings:
+    get:
+      tags:
+        - briefings
+      summary: Busca todos os briefings
+      operationId: getBriefings
+      responses:
+        '200':
+          description: Briefings disponíveis
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Não há briefing disponível
+        '500':
+          description: Erro inesperado
+  /briefing/{id}/:
+    get:
+      tags:
+        - briefing
+      summary: Busca um briefing
+      operationId: getBriefing
+      responses:
+        '200':
+          description: Briefing existe
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Briefing não existe
+      parameters:
+        - in: path
+          name: id
+          description: ID do Briefing existente
+          required: true
+          schema:
+            $ref: '#/components/schemas/Briefing'
+    put:
+      tags:
+        - briefing
+      summary: Busca um briefing
+      operationId: putBriefing
+      parameters:
+        - in: path
+          name: id
+          description: ID do Briefing existente
+          required: true
+          schema:
+            $ref: '#/components/schemas/Briefing'
+      requestBody:
+        description: Atualiza Briefing
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Briefing'
+      responses:
+        '200':
+          description: 'Atualizado com sucesso. Id: {id}'
+        '400':
+          description: Objeto Briefing inválido.
+        '404':
+          description: Briefing inexistente.
+        '500':
+          description: Erro inesperado
+  /briefing/:
+    post:
+      tags:
+        - briefing
+      summary: Busca um briefing
+      operationId: postBriefing
+      requestBody:
+        description: Briefing criado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Briefing'
+      responses:
+        '200':
+          description: 'Criado com sucesso. Id: {id}'
+        '400':
+          description: Objeto Briefing inválido.
+        '404':
+          description: Caminho inexistente.
+        '500':
+          description: Erro inesperado
+  /retailers/:
+    get:
+      tags:
+        - retailers
+      summary: Busca todos os varejistas
+      operationId: getRetailers
+      responses:
+        '200':
+          description: Varejistas disponíveis
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Não há varejista disponível
+        '500':
+          description: Erro inesperado
+  /retailer/{id}/:
+    get:
+      tags:
+        - retailer
+      summary: Busca um varejista.
+      operationId: getRetailer
+      responses:
+        '200':
+          description: Varejista existe.
+        '400':
+          description: Requisição inválida.
+        '404':
+          description: Varejista não existe.
+    parameters:
+      - in: path
+        name: id
+        description: ID do varejista existente.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Retailer'
+    put:
+      tags:
+        - retailer
+      summary: Busca um retailer
+      operationId: putRetailer
+      parameters:
+        - in: path
+          name: id
+          description: ID do Varejista existente
+          required: true
+          schema:
+            $ref: '#/components/schemas/Retailer'
+      requestBody:
+        description: Atualiza varajista
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Retailer'
+      responses:
+        '200':
+          description: 'Atualizado com sucesso. Id: {id}'
+        '400':
+          description: Varejista inválido.
+        '404':
+          description: Objeto Varejista inexistente.
+        '500':
+          description: Erro inesperado
+  /retailer/:
+    post:
+      tags:
+        - retailer
+      summary: Cria um varejista
+      operationId: postRetailer
+      requestBody:
+        description: Varejista criado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Retailer'
+      responses:
+        '200':
+          description: 'Criado com sucesso. Id: {id}'
+        '400':
+          description: Objeto Varejista inválido.
+        '404':
+          description: Caminho inexistente.
+        '500':
+          description: Erro inesperado
+  /vendors/:
+    get:
+      tags:
+        - vendors
+      summary: Busca todos os vendors
+      operationId: getVendors
+      responses:
+        '200':
+          description: Fornecedores disponíveis
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Não há fornecedor disponível
+        '500':
+          description: Erro inesperado
+  /vendor/{id}/:
+    get:
+      tags:
+        - vendor
+      summary: Busca um fornecedor.
+      operationId: getVendor
+      responses:
+        '200':
+          description: Fornecedor existe
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Fornecedor não existe
+    parameters:
+      - in: path
+        name: id
+        description: ID do fornecedor existente.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Vendor'
+    put:
+      tags:
+        - vendor
+      summary: Atuaiza um fornecedor
+      operationId: putVendor
+      parameters:
+        - in: path
+          name: id
+          description: ID do Fornecedor existente
+          required: true
+          schema:
+            $ref: '#/components/schemas/Vendor'
+      requestBody:
+        description: Atualiza fornecedor
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vendor'
+      responses:
+        '200':
+          description: 'Atualizado com sucesso. Id: {id}'
+        '400':
+          description: Objeto fornecedor inválido.
+        '404':
+          description: Fornecedor inexistente.
+        '500':
+          description: Erro inesperado
+  /vendor/:
+    post:
+      tags:
+        - vendor
+      summary: Cria um fornecedor
+      operationId: postVendor
+      requestBody:
+        description: Cria um Fornecedor
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vendor'
+      responses:
+        '200':
+          description: 'Criado com sucesso. Id: {id}'
+        '400':
+          description: Objeto Fornecedor inválido.
+        '404':
+          description: Caminho inexistente.
+        '500':
+          description: Erro inesperado
+  /categories:
+    get:
+      tags:
+        - categories
+      summary: Busca todos as categorias.
+      operationId: getCategories
+      responses:
+        '200':
+          description: Categorias disponíveis
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Não há categoria disponível
+        '500':
+          description: Erro inesperado
+  /category/{id}/:
+    get:
+      tags:
+        - categories
+      summary: Busca uma categoria
+      operationId: getCategory
+      responses:
+        '200':
+          description: Categoria existe
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Categoria não existe
+    parameters:
+      - in: path
+        name: id
+        description: ID da categoria existente.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Category'
+    put:
+      tags:
+        - category
+      summary: Atualiza uma categoria
+      operationId: putCategory
+      parameters:
+        - in: path
+          name: id
+          description: ID da Categoria existente
+          required: true
+          schema:
+            $ref: '#/components/schemas/Category'
+      requestBody:
+        description: Atualiza Categoria
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '200':
+          description: 'Atualizado com sucesso. Id: {id}'
+        '400':
+          description: Categoria inválida.
+        '404':
+          description: Objeto Categoria inexistente.
+        '500':
+          description: Erro inesperado
+  /category/:
+    post:
+      tags:
+        - category
+      summary: Cria uma categoria
+      operationId: postCategory
+      requestBody:
+        description: Categoria
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '200':
+          description: 'Criada com sucesso. Id: {id}'
+        '400':
+          description: Objeto Categoria inválido.
+        '404':
+          description: Caminho inexistente.
+        '500':
+          description: Erro inesperado
